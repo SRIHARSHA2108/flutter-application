@@ -8,46 +8,20 @@ class GandaberundaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const royalPurple = Color(0xFF6D28D9);
-    const electricPurple = Color(0xFF8B5CF6);
+    const royalBlue = Color(0xFF1257A6);
+    const skyBlue = Color(0xFF58A6FF);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gandaberunda',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: royalPurple,
-          primary: royalPurple,
-          secondary: electricPurple,
-          surface: const Color(0xFFF8F7FF),
+          seedColor: royalBlue,
+          primary: royalBlue,
+          secondary: skyBlue,
+          surface: const Color(0xFFF1F7FF),
         ),
-        scaffoldBackgroundColor: const Color(0xFFF5F3FF),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF171044),
-          foregroundColor: Colors.white,
-          centerTitle: false,
-          elevation: 0,
-        ),
-        navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: const Color(0xFF171044),
-          indicatorColor: const Color(0xFF7C3AED),
-          iconTheme: WidgetStateProperty.resolveWith(
-            (states) => IconThemeData(
-              color: states.contains(WidgetState.selected)
-                  ? Colors.white
-                  : const Color(0xFFB7AFD8),
-            ),
-          ),
-          labelTextStyle: WidgetStateProperty.resolveWith(
-            (states) => TextStyle(
-              color: states.contains(WidgetState.selected)
-                  ? Colors.white
-                  : const Color(0xFFB7AFD8),
-              fontWeight: FontWeight.w700,
-              fontSize: 12,
-            ),
-          ),
-        ),
+        scaffoldBackgroundColor: const Color(0xFFEAF3FF),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.white,
@@ -61,7 +35,7 @@ class GandaberundaApp extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: royalPurple, width: 1.6),
+            borderSide: const BorderSide(color: royalBlue, width: 1.6),
           ),
         ),
         filledButtonTheme: FilledButtonThemeData(
@@ -169,84 +143,56 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HeritageBackground(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
-            child: Column(
-              children: [
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF4C1D95), Color(0xFF8B5CF6)],
-                    ),
-                    borderRadius: BorderRadius.circular(32),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0x557C3AED),
-                        blurRadius: 34,
-                        offset: Offset(0, 14),
-                      ),
-                    ],
-                  ),
-                  child: const GandaberundaLogo(size: 118),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 32),
+          child: Column(
+            children: [
+              const Spacer(),
+              const GandaberundaLogo(size: 145, darkBackground: false),
+              const SizedBox(height: 26),
+              Text(
+                'Welcome',
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: const Color(0xFF073B78),
                 ),
-                const SizedBox(height: 26),
-                const Text(
-                  'Welcome',
-                  style: TextStyle(
-                    color: Color(0xFF6D28D9),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1.6,
-                  ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'Discover a powerful experience inspired by Karnataka’s '
+                'timeless symbol of strength.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  height: 1.5,
+                  fontSize: 16,
+                  color: Color(0xFF725E62),
                 ),
-                const SizedBox(height: 6),
-                Text(
-                  'Discover Karnataka',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xFF171044),
-                  ),
+              ),
+              const Spacer(),
+              FilledButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const RegisterScreen()),
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Discover a powerful experience inspired by Karnataka’s '
-                  'timeless symbol of strength.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    height: 1.5,
-                    fontSize: 16,
-                    color: Color(0xFF5B5672),
+                child: const Text('Create account'),
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(52),
+                  side: const BorderSide(color: Color(0xFF1257A6)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                const Spacer(),
-                FilledButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const RegisterScreen()),
-                  ),
-                  child: const Text('Create account'),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
                 ),
-                const SizedBox(height: 12),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(52),
-                    side: const BorderSide(color: Color(0xFF6D28D9)),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LoginScreen()),
-                  ),
-                  child: const Text('I already have an account'),
-                ),
-              ],
-            ),
+                child: const Text('I already have an account'),
+              ),
+            ],
           ),
         ),
       ),
@@ -561,35 +507,32 @@ class _AuthScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
-      body: HeritageBackground(
-        child: SafeArea(
-          top: false,
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 4, 24, 28),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Center(child: GandaberundaLogo(size: 92)),
-                const SizedBox(height: 22),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xFF171044),
-                  ),
+      body: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(24, 4, 24, 28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Center(
+                child: GandaberundaLogo(size: 92, darkBackground: false),
+              ),
+              const SizedBox(height: 22),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: const Color(0xFF073B78),
                 ),
-                const SizedBox(height: 5),
-                Text(
-                  subtitle,
-                  style: const TextStyle(
-                    color: Color(0xFF806B70),
-                    fontSize: 15,
-                  ),
-                ),
-                const SizedBox(height: 26),
-                child,
-              ],
-            ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                subtitle,
+                style: const TextStyle(color: Color(0xFF806B70), fontSize: 15),
+              ),
+              const SizedBox(height: 26),
+              child,
+            ],
           ),
         ),
       ),
@@ -618,7 +561,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final titles = ['GANDABERUNDA', 'DISCOVER', 'SAVED', 'MY PROFILE'];
+    final titles = ['GANDABERUNDA', 'EXPLORE', 'MY PROFILE'];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -640,16 +583,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
           const SizedBox(width: 8),
         ],
       ),
-      body: HeritageBackground(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children: [
-            _HomeTab(name: _profileName),
-            const _ExploreTab(),
-            const _SavedTab(),
-            _ProfileTab(name: _profileName),
-          ],
-        ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          _HomeTab(name: _profileName),
+          const _ExploreTab(),
+          _ProfileTab(name: _profileName),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
@@ -659,12 +599,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
           NavigationDestination(
             icon: Icon(Icons.search_outlined),
-            label: 'Discover',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bookmark_border_rounded),
-            selectedIcon: Icon(Icons.bookmark_rounded),
-            label: 'Saved',
+            label: 'Explore',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
@@ -702,25 +637,23 @@ class _HomeTab extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       children: [
         Container(
-          padding: const EdgeInsets.fromLTRB(22, 22, 18, 22),
+          padding: const EdgeInsets.all(22),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [Color(0xFF171044), Color(0xFF4C1D95), Color(0xFF7C3AED)],
+              colors: [Color(0xFF073B78), Color(0xFF1976D2)],
             ),
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(24),
             boxShadow: const [
               BoxShadow(
-                color: Color(0x4D6D28D9),
-                blurRadius: 28,
-                offset: Offset(0, 12),
+                color: Color(0x241257A6),
+                blurRadius: 18,
+                offset: Offset(0, 8),
               ),
             ],
           ),
           child: Row(
             children: [
-              const GandaberundaLogo(size: 88),
+              const GandaberundaLogo(size: 82),
               const SizedBox(width: 17),
               Expanded(
                 child: Column(
@@ -736,8 +669,8 @@ class _HomeTab extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     const Text(
-                      'Heritage, stories and community — all in one place.',
-                      style: TextStyle(color: Color(0xFFE9E3FF), height: 1.35),
+                      'Your journey begins here.',
+                      style: TextStyle(color: Color(0xFFD8EBFF)),
                     ),
                   ],
                 ),
@@ -746,17 +679,11 @@ class _HomeTab extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 28),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Explore your world',
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
-            ),
-            TextButton(onPressed: () {}, child: const Text('View all')),
-          ],
+        Text(
+          'Quick access',
+          style: Theme.of(
+            context,
+          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
         ),
         const SizedBox(height: 14),
         GridView.builder(
@@ -773,10 +700,10 @@ class _HomeTab extends StatelessWidget {
             final card = cards[index];
             return Card(
               elevation: 0,
-              color: const Color(0xF7FFFFFF),
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18),
-                side: const BorderSide(color: Color(0xFFE7E1FA)),
+                side: const BorderSide(color: Color(0xFFF0E5D6)),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(17),
@@ -784,18 +711,7 @@ class _HomeTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(9),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFEDE9FE),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(
-                        card.icon,
-                        color: const Color(0xFF6D28D9),
-                        size: 26,
-                      ),
-                    ),
+                    Icon(card.icon, color: const Color(0xFF1976D2), size: 30),
                     const Spacer(),
                     Text(
                       card.title,
@@ -806,47 +722,13 @@ class _HomeTab extends StatelessWidget {
                     ),
                     Text(
                       card.detail,
-                      style: const TextStyle(color: Color(0xFF6B6680)),
+                      style: const TextStyle(color: Color(0xFF806B70)),
                     ),
                   ],
                 ),
               ),
             );
           },
-        ),
-        const SizedBox(height: 24),
-        Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: const Color(0xFF171044),
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: const Row(
-            children: [
-              Icon(Icons.auto_awesome_rounded, color: Color(0xFFF5C451)),
-              SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Story of the day',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'The legend behind Karnataka’s two-headed guardian',
-                      style: TextStyle(color: Color(0xFFD8D2EE), height: 1.35),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.arrow_forward_rounded, color: Colors.white),
-            ],
-          ),
         ),
       ],
     );
@@ -895,8 +777,8 @@ class _ExploreTab extends StatelessWidget {
             child: ListTile(
               contentPadding: const EdgeInsets.all(12),
               leading: CircleAvatar(
-                backgroundColor: const Color(0xFFEDE9FE),
-                child: Icon(item.$1, color: const Color(0xFF6D28D9)),
+                backgroundColor: const Color(0xFFDCEEFF),
+                child: Icon(item.$1, color: const Color(0xFF1257A6)),
               ),
               title: Text(
                 item.$2,
@@ -904,84 +786,6 @@ class _ExploreTab extends StatelessWidget {
               ),
               subtitle: Text(item.$3),
               trailing: const Icon(Icons.chevron_right),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _SavedTab extends StatelessWidget {
-  const _SavedTab();
-
-  @override
-  Widget build(BuildContext context) {
-    const saved = [
-      (
-        Icons.temple_hindu_outlined,
-        'Mysuru’s royal heritage',
-        'Heritage • 8 min read',
-      ),
-      (
-        Icons.festival_outlined,
-        'Festivals of Karnataka',
-        'Culture • 12 stories',
-      ),
-      (
-        Icons.event_available_outlined,
-        'Community cultural evening',
-        'Event • This Saturday',
-      ),
-    ];
-    return ListView(
-      padding: const EdgeInsets.all(20),
-      children: [
-        Text(
-          'Your collection',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w800,
-            color: const Color(0xFF171044),
-          ),
-        ),
-        const SizedBox(height: 6),
-        const Text(
-          'Stories and experiences you want to revisit.',
-          style: TextStyle(color: Color(0xFF6B6680)),
-        ),
-        const SizedBox(height: 20),
-        ...saved.map(
-          (item) => Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            decoration: BoxDecoration(
-              color: const Color(0xF7FFFFFF),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: const Color(0xFFE7E1FA)),
-            ),
-            child: ListTile(
-              contentPadding: const EdgeInsets.all(14),
-              leading: Container(
-                padding: const EdgeInsets.all(11),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF6D28D9), Color(0xFF8B5CF6)],
-                  ),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Icon(item.$1, color: Colors.white),
-              ),
-              title: Text(
-                item.$2,
-                style: const TextStyle(fontWeight: FontWeight.w800),
-              ),
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(item.$3),
-              ),
-              trailing: const Icon(
-                Icons.bookmark_rounded,
-                color: Color(0xFF6D28D9),
-              ),
             ),
           ),
         ),
@@ -1199,79 +1003,77 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           const SizedBox(width: 8),
         ],
       ),
-      body: HeritageBackground(
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(24),
-            children: [
-              const Center(child: AnimatedProfileAvatar()),
-              const SizedBox(height: 16),
-              Center(
-                child: TextButton.icon(
-                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Photo selection can be connected here'),
-                    ),
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            const Center(child: AnimatedProfileAvatar()),
+            const SizedBox(height: 16),
+            Center(
+              child: TextButton.icon(
+                onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Photo selection can be connected here'),
                   ),
-                  icon: const Icon(Icons.camera_alt_outlined),
-                  label: const Text('Change profile photo'),
                 ),
+                icon: const Icon(Icons.camera_alt_outlined),
+                label: const Text('Change profile photo'),
               ),
-              const SizedBox(height: 18),
-              TextFormField(
-                controller: _nameController,
-                textCapitalization: TextCapitalization.words,
-                decoration: const InputDecoration(
-                  labelText: 'Full name',
-                  prefixIcon: Icon(Icons.person_outline),
-                ),
-                validator: (value) => value == null || value.trim().isEmpty
-                    ? 'Please enter your name'
-                    : null,
+            ),
+            const SizedBox(height: 18),
+            TextFormField(
+              controller: _nameController,
+              textCapitalization: TextCapitalization.words,
+              decoration: const InputDecoration(
+                labelText: 'Full name',
+                prefixIcon: Icon(Icons.person_outline),
               ),
-              const SizedBox(height: 14),
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'Email address',
-                  prefixIcon: Icon(Icons.mail_outline),
-                ),
-                validator: _emailValidator,
+              validator: (value) => value == null || value.trim().isEmpty
+                  ? 'Please enter your name'
+                  : null,
+            ),
+            const SizedBox(height: 14),
+            TextFormField(
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                labelText: 'Email address',
+                prefixIcon: Icon(Icons.mail_outline),
               ),
-              const SizedBox(height: 14),
-              TextFormField(
-                controller: _phoneController,
-                keyboardType: TextInputType.phone,
-                decoration: const InputDecoration(
-                  labelText: 'Phone number',
-                  prefixIcon: Icon(Icons.phone_outlined),
-                ),
-                validator: (value) => (value?.trim().length ?? 0) < 8
-                    ? 'Please enter a valid phone number'
-                    : null,
+              validator: _emailValidator,
+            ),
+            const SizedBox(height: 14),
+            TextFormField(
+              controller: _phoneController,
+              keyboardType: TextInputType.phone,
+              decoration: const InputDecoration(
+                labelText: 'Phone number',
+                prefixIcon: Icon(Icons.phone_outlined),
               ),
-              const SizedBox(height: 14),
-              TextFormField(
-                controller: _bioController,
-                textCapitalization: TextCapitalization.sentences,
-                maxLines: 3,
-                maxLength: 120,
-                decoration: const InputDecoration(
-                  labelText: 'About me',
-                  alignLabelWithHint: true,
-                  prefixIcon: Icon(Icons.notes_outlined),
-                ),
+              validator: (value) => (value?.trim().length ?? 0) < 8
+                  ? 'Please enter a valid phone number'
+                  : null,
+            ),
+            const SizedBox(height: 14),
+            TextFormField(
+              controller: _bioController,
+              textCapitalization: TextCapitalization.sentences,
+              maxLines: 3,
+              maxLength: 120,
+              decoration: const InputDecoration(
+                labelText: 'About me',
+                alignLabelWithHint: true,
+                prefixIcon: Icon(Icons.notes_outlined),
               ),
-              const SizedBox(height: 10),
-              FilledButton.icon(
-                onPressed: _save,
-                icon: const Icon(Icons.check),
-                label: const Text('Save changes'),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            FilledButton.icon(
+              onPressed: _save,
+              icon: const Icon(Icons.check),
+              label: const Text('Save changes'),
+            ),
+          ],
         ),
       ),
     );
@@ -1436,62 +1238,6 @@ class _ProfileOption extends StatelessWidget {
   }
 }
 
-class HeritageBackground extends StatelessWidget {
-  const HeritageBackground({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        const DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0xFFF9F8FF), Color(0xFFF1EDFF)],
-            ),
-          ),
-        ),
-        Positioned(
-          right: -92,
-          top: 72,
-          child: IgnorePointer(
-            child: Opacity(
-              opacity: .055,
-              child: Transform.rotate(
-                angle: -.12,
-                child: const SizedBox(
-                  width: 330,
-                  height: 330,
-                  child: CustomPaint(painter: _GandaberundaPainter()),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-          left: -125,
-          bottom: -70,
-          child: IgnorePointer(
-            child: Opacity(
-              opacity: .035,
-              child: const SizedBox(
-                width: 360,
-                height: 360,
-                child: CustomPaint(painter: _GandaberundaPainter()),
-              ),
-            ),
-          ),
-        ),
-        child,
-      ],
-    );
-  }
-}
-
 class GandaberundaLogo extends StatelessWidget {
   const GandaberundaLogo({
     super.key,
@@ -1521,8 +1267,6 @@ class GandaberundaLogo extends StatelessWidget {
 }
 
 class _GandaberundaPainter extends CustomPainter {
-  const _GandaberundaPainter();
-
   @override
   void paint(Canvas canvas, Size size) {
     final gold = Paint()
